@@ -7,6 +7,7 @@
 [Section 1.4: Importance of Quoting in Strings](#section14)<br>
 [Section 1.5: Viewing information for Bash built-ins](#section15)<br>
 [Section 1.6: Hello World in "Debug" mode](#section16)<br>
+[Section 1.7: Handling Named Arguments](#section17)<br>
 
 <a name="section1"></a>
 ## Section 1.1: Hello World
@@ -290,22 +291,52 @@ help -d
 <a name="section16"></a>
 ## Section 1.6: Hello World in "Debug" mode
 
+Sử dụng tham số `-x` để xem debug từ dòng lệnh.
+
+```
+[root@bash ~]# cat hello-world.sh
+#!/bin/bash
+echo "DuyDM"
+[root@bash ~]# bash -x hello-world.sh
++ echo DuyDM
+DuyDM
+[root@bash ~]#
+```
+
+Ví dụ:
+
+```
+[root@bash ~]# cat test.sh
+#!/bin/bash
+
+echo "Hello World\n"
+
+adding_string_to_number="s"
+v=$(expr 5 + $adding_string_to_number)
+[root@bash ~]#
+[root@bash ~]#
+[root@bash ~]#
+[root@bash ~]# bash test.sh
+Hello World\n
+expr: non-integer argument
+[root@bash ~]#
+[root@bash ~]#
+
+[root@bash ~]#
+[root@bash ~]# bash -x test.sh
++ echo 'Hello World\n'
+Hello World\n
++ adding_string_to_number=s
+++ expr 5 + s
+expr: non-integer argument
++ v=
+[root@bash ~]#
+```
+
+Khi sử dụng debug `-x` sẽ thấy được toán tử của phép + không hợp lệ.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<a name="section17"></a>
+## Section 1.7: Handling Named Arguments
 
 
