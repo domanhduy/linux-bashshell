@@ -5,6 +5,8 @@
 [Section 1.2: Hello World Using Variables](#section12)<br>
 [Section 1.3: Hello World with User Input](#section13)<br>
 [Section 1.4: Importance of Quoting in Strings](#section14)<br>
+[Section 1.5: Viewing information for Bash built-ins](#section15)<br>
+[Section 1.6: Hello World in "Debug" mode](#section16)<br>
 
 <a name="section1"></a>
 ## Section 1.1: Hello World
@@ -188,7 +190,113 @@ Hello, DuyDM-DepTrai
 <a name="section14"></a>
 ## Section 1.4: Importance of Quoting in Strings
 
-Quoting - Trích dẫn là quan trọng đối với string trong bash.
+Quoting - Trích dẫn là quan trọng đối với string trong bash. Kiểm soát việc này có thể kiểm soát được kết quả đầu ra.
+
+- Có 2 kiểu quoting
+
+```
+Weak: uses double quotes: "
+Strong: uses single quotes: '
+```
+
+Nếu muốn hiển thị kết quả với giá trị của đối số truyền về thì sử dụng `Weak Quoting`
+
+```
+[root@bash ~]# cat hello3.sh
+#!/bin/bash
+
+name="DuyDM"
+
+echo "Hello $name"
+[root@bash ~]# ./hello3.sh
+Hello DuyDM
+```
+
+Nếu không muốn hiển thị kết quả với giá trị của đối số truyền vào thì sử dụng `Strong Quoting`
+
+```
+[root@bash ~]# cat hello3.sh
+#!/bin/bash
+
+name="DuyDM"
+
+echo 'Hello $name'
+[root@bash ~]# ./hello3.sh
+Hello $name
+```
+
+Sử dụng `\` trước biến để ngăn hiển thị giá trị đối số truyền vào
+
+```
+[root@bash ~]# cat hello3.sh
+#!/bin/bash
+
+name="DuyDM"
+
+echo "Hello \$name"
+[root@bash ~]# ./hello3.sh
+Hello $name
+```
+
+<a name="section15"></a>
+## Section 1.5: Viewing information for Bash built-ins
+
+Các lệnh `built-ins` là các lệnh có sẵn trong linux
+
+```
+help <command>
+```
+
+Để show lên gợi ý về các tập lệnh, sự phối hợp của các option.
+
+
+```
+[root@bash ~]# help cd
+cd: cd [-L|[-P [-e]]] [dir]
+    Change the shell working directory.
+
+    Change the current directory to DIR.  The default DIR is the value of the
+    HOME shell variable.
+
+    The variable CDPATH defines the search path for the directory containing
+    DIR.  Alternative directory names in CDPATH are separated by a colon (:).
+    A null directory name is the same as the current directory.  If DIR begins
+    with a slash (/), then CDPATH is not used.
+
+    If the directory is not found, and the shell option `cdable_vars' is set,
+    the word is assumed to be  a variable name.  If that variable has a value,
+    its value is used for DIR.
+
+    Options:
+        -L      force symbolic links to be followed
+        -P      use the physical directory structure without following symbolic
+        links
+        -e      if the -P option is supplied, and the current working directory
+        cannot be determined successfully, exit with a non-zero status
+
+    The default is to follow symbolic links, as if `-L' were specified.
+
+    Exit Status:
+    Returns 0 if the directory is changed, and if $PWD is set successfully when
+    -P is used; non-zero otherwise.
+```
+
+- Xem tất cả các tập lệnh có sẵn trong hệ thống Linux
+
+```
+help -d
+```
+
+<a name="section16"></a>
+## Section 1.6: Hello World in "Debug" mode
+
+
+
+
+
+
+
+
 
 
 
